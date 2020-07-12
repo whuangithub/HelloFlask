@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+    <link rel="icon" href={{url_for('static', filename='favicon.ico')}}>
     <meta charset="utf-8">
     {# {{ }} => variable name #}
     <title>{{ name }}'s Watchlist</title>
 </head>
 <body>
-    <h2>{{ name }}'s Watchlist</h2>
+    <h2>
+        <img alt="Avatar" class="avatar" src="{{ url_for('static', filename='images/avatar.png') }}"> {# add directly #}
+        {{ name }}'s Watchlist
+    </h2>
     {# use length filter to get length of movies#}
     <p>{{ movies|length }} Titles</p>
-    <ul>
+    <ul class="movie-list">
         {# {% %} => sentence (if else endif; for; ...)#}
         {% for movie in movies %}  {# for sentence#}
         <li>{{ movie.title }} - {{ movie.year }}</li> {# list of the movies#}
@@ -17,6 +22,7 @@
     </ul>
     <footer>
         <small>&copy; 2018 <a href="/hello">Hello Message</a></small>
+        <img alt="totoro" class="totoro" src="{{url_for('static', filename='images/totoro.gif')}}">
     </footer>
 </body>
 </html>
